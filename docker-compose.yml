@@ -1,27 +1,27 @@
 version: "3.3"
 services:
   expense-frontend:
-    build: 
+    build:
       context: ./expense-frontend
       dockerfile: Dockerfile
-      restart: always
+    restart: always
     # ports:
-      # - "3000:3000"
+    # - "3000:3000"
     # depends_on:
     #   - expense-backend
   expense-backend:
-    build: 
+    build:
       context: ./expense-backend
       dockerfile: Dockerfile
     restart: always
     # ports:
-      # - "8000:8000"
+    # - "8000:8000"
     depends_on:
       - expense-db
   expense-db:
     image: mysql:8.0.20
     # ports:
-      # - "3307:3306"
+    # - "3307:3306"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
