@@ -4,6 +4,7 @@ services:
     build: 
       context: ./expense-frontend
       dockerfile: Dockerfile
+      restart: always
     # ports:
       # - "3000:3000"
     # depends_on:
@@ -12,6 +13,7 @@ services:
     build: 
       context: ./expense-backend
       dockerfile: Dockerfile
+    restart: always
     # ports:
       # - "8000:8000"
     depends_on:
@@ -20,6 +22,7 @@ services:
     image: mysql:8.0.20
     # ports:
       # - "3307:3306"
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: expense_management
