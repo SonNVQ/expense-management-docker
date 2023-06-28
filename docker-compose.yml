@@ -1,42 +1,28 @@
 version: "3.3"
 services:
   expense-frontend:
-    build:
+    build: 
       context: ./expense-frontend
       dockerfile: Dockerfile
-    restart: always
-    ports:
-      - "3000:3000"
-    depends_on:
-      - expense-backend
+    # ports:
+      # - "3000:3000"
+    # depends_on:
+    #   - expense-backend
   expense-backend:
-    build:
+    build: 
       context: ./expense-backend
       dockerfile: Dockerfile
-    restart: always
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    # ports:
+      # - "8000:8000"
     depends_on:
       - expense-db
-    # webserver:
-    #   image: nginx:alpine
-    #   restart: always
-    #   ports:
-    #     - "81:80"
-    #     - "8000:8000"
-    #   volumes:
-    #     - ./nginx.conf:/etc/nginx/nginx.conf
-    #   depends_on:
-    #     - expense-frontend
-    #     - expense-backend
   expense-db:
     image: mysql:8.0.20
     # ports:
-    #   - "3307:3306"
+      # - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: expense_management
-
   webserver:
     build:
       context: ./nginx
