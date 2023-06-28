@@ -34,5 +34,5 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "81:80"
+      - "80:80"
       - "8000:8000"
