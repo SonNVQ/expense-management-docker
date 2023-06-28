@@ -9,6 +9,8 @@ services:
     # - "3000:3000"
     # depends_on:
     #   - expense-backend
+    networks:
+      - expense-network
   expense-backend:
     build:
       context: ./expense-backend
@@ -18,6 +20,8 @@ services:
     # - "8000:8000"
     depends_on:
       - expense-db
+    networks:
+      - expense-network
   expense-db:
     image: mysql:8.0.20
     # ports:
@@ -26,6 +30,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: expense_management
+    networks:
+      - expense-network
   webserver:
     build:
       context: ./nginx
@@ -34,3 +40,9 @@ services:
     ports:
       - "80:80"
       - "8000:8000"
+    networks:
+      - expense-network
+
+networks:
+  expense-network:
+    driver: bridge
