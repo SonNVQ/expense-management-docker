@@ -11,4 +11,4 @@ git clone https://github.com/tieutrunghoa1198/expense-frontend.git expense-front
 echo '----Cloning back-end'
 git clone https://github.com/tieutrunghoa1198/expense-backend.git expense-backend
 echo ----Building...
-docker-compose up
+# docker-compose up
